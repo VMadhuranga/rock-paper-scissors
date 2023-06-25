@@ -8,21 +8,37 @@ function getPlayerChoice() {
     return choice;
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return "It's a tie";
-    } else if (
-        (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "paper" && computerSelection === "rock") ||
-        (playerSelection === "scissors" && computerSelection === "paper")
-    ) {
-        return `You Win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)}`;
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+            console.log("It's a tie");
+        } else if (
+            (playerSelection === "rock" && computerSelection === "scissors") ||
+            (playerSelection === "paper" && computerSelection === "rock") ||
+            (playerSelection === "scissors" && computerSelection === "paper")
+        ) {
+            playerScore++;
+            console.log(`You Scored! ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)}`);
+        } else {
+            computerScore++;
+            console.log(`Computer Scored! ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)}`);
+        }
+    }
+        
+    for (let i = 1; i <= 5; i++) {
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+    }
+
+    if (playerScore > computerScore) {
+        return "You Won! You beats Computer";
     } else {
-        return `You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)}`;
+        return "You Lose! Computer beats you";
     }
 }
 
-let playerSelection = getPlayerChoice();
-let computerSelection = getComputerChoice();
-
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
