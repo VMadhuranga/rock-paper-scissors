@@ -9,14 +9,16 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (
-        (playerSelection === "rock" && computerSelection === "scissors") || 
+    if (playerSelection === computerSelection) {
+        return "It's a tie";
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")
     ) {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+        return `You Win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)}`;
     } else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        return `You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1,)} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1,)}`;
     }
 }
 
