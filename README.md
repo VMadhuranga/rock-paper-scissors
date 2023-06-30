@@ -9,6 +9,8 @@ and compare with user choice and gives score to winner.
 
 First one to get five point will be Winner.
 
+Live preview: https://vmadhuranga.github.io/rock-paper-scissors/
+
 TODO:
 
 - Improve UI
